@@ -21,7 +21,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v4
         with:
-          context: 13.0
+          context: "13.0"
           file: 13.0/Dockerfile
           push: true
           tags: adrienpeiffer/odoo-13.0:latest
