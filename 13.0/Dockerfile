@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:20.04
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
@@ -28,7 +28,6 @@ RUN apt-get update && \
             python3-renderpm \
             python3-setuptools \
             python3-slugify \
-            python3-vatnumber \
             python3-vobject \
             python3-watchdog \
             python3-xlrd \
