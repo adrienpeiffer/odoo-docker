@@ -7,6 +7,7 @@ ENV LANG C.UTF-8
 
 # Retrieve the target architecture to install the correct wkhtmltopdf package
 ARG TARGETARCH
+ARG $PYTHONBIN=python3
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN apt-get update && \
@@ -65,8 +66,14 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main' > /etc/a
     && rm -f /etc/apt/sources.list.d/pgdg.list \
     && rm -rf /var/lib/apt/lists/*
 
+RUN useradd --shell /bin/bash -m odoo
 
-# Install Odoo and python dependencies
+# Install Odoo and python dependencies in virtual environment
+RUN set -x \
+  && $PYTHONBIN -m venv /odoo \
+  && /odoo/bin/pip install --no-cache-dir -U pip wheel setuptools
+ENV PATH=/odoo/bin:$PATH
+ENV VIRTUAL_ENV=/odoo
 
 RUN pip install setuptools==57.5.0
 RUN pip install vatnumber
@@ -81,8 +88,10 @@ COPY ./odoo.conf /etc/odoo/
 
 RUN chmod +x /entrypoint.sh
 
-# Set /mnt/extra-addons for users addons
-RUN mkdir -p /mnt/extra-addons
+# Set permissions and Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
+RUN chown odoo /etc/odoo/odoo.conf \
+    && mkdir -p /mnt/extra-addons \
+    && chown -R odoo /mnt/extra-addons
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
 # Expose Odoo services
@@ -94,6 +103,9 @@ ENV ODOO_RC /etc/odoo/odoo.conf
 COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
 
 RUN chmod +x /usr/local/bin/wait-for-psql.py
+
+# Set default user when running the container
+USER odoo
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["odoo"]
