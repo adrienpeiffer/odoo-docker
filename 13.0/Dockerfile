@@ -24,6 +24,8 @@ RUN apt-get update && \
             python3-dev \
             libpq-dev \
             build-essential \
+            python3-venv \
+            python3.10-venv \
             python3-num2words \
             python3-pip \
             python3-phonenumbers \
