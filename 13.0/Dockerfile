@@ -7,7 +7,6 @@ ENV LANG C.UTF-8
 
 # Retrieve the target architecture to install the correct wkhtmltopdf package
 ARG TARGETARCH
-ARG $PYTHONBIN=python3
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN apt-get update && \
@@ -70,7 +69,7 @@ RUN useradd --shell /bin/bash -m odoo
 
 # Install Odoo and python dependencies in virtual environment
 RUN set -x \
-  && $PYTHONBIN -m venv /odoo \
+  && python3 -m venv /odoo \
   && /odoo/bin/pip install --no-cache-dir -U pip wheel setuptools
 ENV PATH=/odoo/bin:$PATH
 ENV VIRTUAL_ENV=/odoo
