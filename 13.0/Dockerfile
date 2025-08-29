@@ -66,6 +66,9 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main' > /etc/a
 
 RUN pip install setuptools==57.5.0
 RUN pip install vatnumber
+
+COPY requirements.txt .
+
 RUN pip install -r requirements.txt
 
 # Copy entrypoint script and Odoo configuration file
