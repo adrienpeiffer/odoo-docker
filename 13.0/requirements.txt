@@ -1,0 +1,21 @@
+
+click==8.2.1
+click-odoo==1.7.0
+click-odoo-contrib==1.21
+freezegun==0.3.11
+lxml==4.8.0
+manifestoo-core==1.11
+num2words==0.5.6
+packaging==25.0
+phonenumbers==8.9.10
+pycryptodome==3.23.0
+pypdf2==1.26.0
+python-dateutil==2.7.3
+python-slugify==2.0.1
+setuptools==57.5.0
+vatnumber==1.2
+six==1.12.0
+unidecode==1.0.23
+werkzeug==0.16.1
+xlrd==1.1.0
+odoo @ git+https://github.com/adrienpeiffer/odoo.git@1ec950092bca3b3fe899f9e0731685ca5a7b41ce

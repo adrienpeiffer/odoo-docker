@@ -33,7 +33,6 @@ RUN apt-get update && \
             python3-xlrd \
             python3-xlwt \
             python-is-python3 \
-            equivs  \
             xz-utils && \
     if [ -z "${TARGETARCH}" ]; then \
         TARGETARCH="$(dpkg --print-architecture)"; \
@@ -62,28 +61,12 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main' > /etc/a
     && rm -f /etc/apt/sources.list.d/pgdg.list \
     && rm -rf /var/lib/apt/lists/*
 
-RUN equivs-control python3-vatnumber && \
-    sed -i 's/^Section:.*/Section: misc/' python3-vatnumber && \
-    echo "Package: python3-vatnumber" >> python3-vatnumber && \
-    echo "Version: 1.0" >> python3-vatnumber && \
-    echo "Description: Fake python3-vatnumber to satisfy dependencies" >> python3-vatnumber && \
-    equivs-build python3-vatnumber && \
-    dpkg -i python3-vatnumber_1.0_all.deb && \
-    rm -f python3-vatnumber python3-vatnumber_1.0_all.deb
+
+# Install Odoo and python dependencies
 
 RUN pip install setuptools==57.5.0
 RUN pip install vatnumber
-RUN pip install Werkzeug==0.16.1
-
-# Install Odoo
-ENV ODOO_VERSION 13.0
-ARG ODOO_RELEASE=20221201
-ARG ODOO_SHA=08FCE596F0FFABC6DC39287B9DD01F9BA9845B74
-RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-        && echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
-        && apt-get update \
-        && apt-get -y install --no-install-recommends ./odoo.deb \
-        && rm -rf /var/lib/apt/lists/* odoo.deb
+RUN pip install -r requirements.txt
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
