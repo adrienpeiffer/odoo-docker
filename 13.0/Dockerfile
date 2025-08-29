@@ -73,6 +73,7 @@ RUN equivs-control python3-vatnumber && \
 
 RUN pip install setuptools==57.5.0
 RUN pip install vatnumber
+RUN pip install Werkzeug==0.16.1
 
 # Install Odoo
 ENV ODOO_VERSION 13.0
