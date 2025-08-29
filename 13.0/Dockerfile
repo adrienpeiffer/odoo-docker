@@ -82,7 +82,7 @@ COPY ./odoo.conf /etc/odoo/
 RUN chmod +x /entrypoint.sh
 
 # Set /mnt/extra-addons for users addons
-RUN mkdir -p /mnt/extra-addons \
+RUN mkdir -p /mnt/extra-addons
 VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
 
 # Expose Odoo services
