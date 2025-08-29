@@ -22,6 +22,7 @@ RUN apt-get update && \
             node-less \
             npm \
             python3-dev \
+            libpq-dev \
             build-essential \
             python3-num2words \
             python3-pip \
