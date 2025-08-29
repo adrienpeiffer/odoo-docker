@@ -71,6 +71,7 @@ RUN equivs-control python3-vatnumber && \
     dpkg -i python3-vatnumber_1.0_all.deb && \
     rm -f python3-vatnumber python3-vatnumber_1.0_all.deb
 
+RUN pip install setuptools==57.5.0
 RUN pip install vatnumber
 
 # Install Odoo
