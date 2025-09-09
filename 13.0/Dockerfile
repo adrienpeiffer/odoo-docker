@@ -22,10 +22,13 @@ RUN apt-get update && \
             node-less \
             npm \
             python3-dev \
+            ldap-utils \
+            libldap2-dev \
+            libsasl2-dev \
             libpq-dev \
             build-essential \
             python3-venv \
-            python3.10-venv \
+            python3-venv \
             python3-num2words \
             python3-pip \
             python3-phonenumbers \
@@ -78,6 +81,7 @@ ENV VIRTUAL_ENV=/odoo
 
 RUN pip install setuptools==57.5.0
 RUN pip install vatnumber
+RUN pip install python-ldap
 
 COPY requirements.txt .
 
