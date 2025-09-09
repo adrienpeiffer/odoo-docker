@@ -80,8 +80,6 @@ ENV PATH=/odoo/bin:$PATH
 ENV VIRTUAL_ENV=/odoo
 
 RUN pip install setuptools==57.5.0
-RUN pip install vatnumber
-RUN pip install python-ldap chardet
 
 COPY requirements.txt .
 
