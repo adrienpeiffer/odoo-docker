@@ -42,6 +42,7 @@ RUN apt-get update && \
             python3-xlrd \
             python3-xlwt \
             python-is-python3 \
+            vim \
             xz-utils && \
     if [ -z "${TARGETARCH}" ]; then \
         TARGETARCH="$(dpkg --print-architecture)"; \
