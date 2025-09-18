@@ -11,6 +11,7 @@ id -u odoo &> /dev/null || useradd --shell /bin/bash -u $USER_ID -o -c "" -m odo
 
 chown odoo /etc/odoo/odoo.conf
 chown -R odoo /mnt/extra-addons
+chown -R odoo /odoo
 
 if [ -v PASSWORD_FILE ]; then
     PASSWORD="$(< $PASSWORD_FILE)"
