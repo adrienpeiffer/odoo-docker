@@ -27,6 +27,7 @@ RUN apt-get update && \
             libsasl2-dev \
             libpq-dev \
             build-essential \
+            openssh-client \
             python3-venv \
             python3-venv \
             python3-num2words \
