@@ -87,8 +87,6 @@ RUN pushd /usr/local/bin \
   && popd \
   && gosu nobody true
 
-RUN useradd --shell /bin/bash -m odoo
-
 # Install Odoo and python dependencies in virtual environment
 RUN set -x \
   && python3 -m venv /odoo \
