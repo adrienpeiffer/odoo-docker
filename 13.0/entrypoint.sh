@@ -2,6 +2,16 @@
 
 set -e
 
+# allow to customize the UID of the odoo user,
+# so we can share the same than the host's.
+# If no user id is set, we use 999
+USER_ID=${LOCAL_USER_ID:-999}
+
+id -u odoo &> /dev/null || useradd --shell /bin/bash -u $USER_ID -o -c "" -m odoo
+
+chown odoo /etc/odoo/odoo.conf
+chown -R odoo /mnt/extra-addons
+
 if [ -v PASSWORD_FILE ]; then
     PASSWORD="$(< $PASSWORD_FILE)"
 fi
