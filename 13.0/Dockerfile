@@ -15,6 +15,7 @@ RUN set -e \
        expect \
        git \
        openssh-client \
+       libcairo2 \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -37,6 +38,7 @@ RUN set -e \
       ldap-utils \
       libldap2-dev \
       libsasl2-dev \
+      libcairo2-dev \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/*
 
