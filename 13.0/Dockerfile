@@ -44,7 +44,7 @@ RUN set -e \
 
 COPY requirements.txt .
 
-RUN pip install setuptools==57.5.0 
+RUN pip install setuptools==57.5.0 wheel
 RUN pip wheel --no-deps --wheel-dir=/build -r requirements.txt
 
 FROM base as dependencies
