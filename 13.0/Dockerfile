@@ -45,6 +45,7 @@ RUN set -e \
 COPY requirements.txt .
 
 RUN pip install setuptools==57.5.0 wheel
+RUN pip wheel --no-build-isolation --no-cache-dir --wheel-dir=/build vatnumber==1.2
 RUN pip wheel --no-deps --wheel-dir=/build -r requirements.txt
 
 FROM base as dependencies
