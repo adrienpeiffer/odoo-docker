@@ -16,6 +16,7 @@ RUN set -e \
        git \
        openssh-client \
        libcairo2 \
+       sudo \
   && apt -y clean \
   && rm -rf /var/lib/apt/lists/*
 
