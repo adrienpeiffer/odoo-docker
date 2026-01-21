@@ -32,7 +32,7 @@ mock==5.2.0
 mr.bob==1.0.1
 nodeenv==1.9.1
 num2words==0.5.6
-odoo @ git+https://github.com/adrienpeiffer/odoo.git@f07beb4e517f107fb45467dec9f5f472f8be991d
+odoo @ git+https://github.com/adrienpeiffer/odoo.git@d2d2c563d093ec7d6df1108558fff1952cf35a85
 ofxparse==0.21
 packaging==25.0
 passlib==1.7.4
