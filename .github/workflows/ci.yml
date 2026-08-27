@@ -24,4 +24,4 @@ jobs:
           context: "13.0"
           file: 13.0/Dockerfile
           push: true
-          tags: adrienpeiffer/odoo-13.0:latest
+          tags: adrienpeiffer/odoo-13.0:dev
